@@ -1,6 +1,7 @@
 ﻿using ProjetoBase.Domain.Entities.Base;
 using ProjetoBase.Domain.Enum;
 using ProjetoBase.Domain.ValueObjects;
+using ProjetoBase.Domain.Utils.Validators;
 using System;
 
 namespace ProjetoBase.Domain.Entities.Usuario
@@ -13,7 +14,7 @@ namespace ProjetoBase.Domain.Entities.Usuario
             Email = email;
             Tipo = tipo;
 
-            Validate(this, UsuarioValidator());
+            Validate(this, new UsuarioValidator());
         }
 
         public Nome Nome { get; private set; }
