@@ -9,10 +9,11 @@ namespace ProjetoBase.Domain.Arguments.Base
 {
     public class ResponseBase
     {
-        public ResponseBase()
+        public bool Status
         {
-            Mensagem = MensagemGenerica.OPERACAO_SUCESSO;
+            get { return ErrorMessage.Count <= 0; }
         }
-        public string Mensagem { get; set; }
+
+        public List<string> ErrorMessage { get; set; }
     }
 }

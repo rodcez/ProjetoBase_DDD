@@ -1,8 +1,14 @@
 ﻿namespace ProjetoBase.Domain.ValueObjects
 {
-    public class Nome
+    public class Nome 
     {
-        public string PrimeiroNome { get; set; }
-        public string UltimoNome { get; set; }
+        public Nome(string primeiroNome, string ultimoNome)
+        {
+            PrimeiroNome = primeiroNome;
+            UltimoNome = ultimoNome;
+        }
+
+        public string PrimeiroNome { get; private set; }
+        public string UltimoNome { get; private set; }
     }
 }

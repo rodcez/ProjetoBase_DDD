@@ -4,11 +4,7 @@ using ProjetoBase.Domain.Enum;
 using ProjetoBase.Domain.Interfaces.Repositories;
 using ProjetoBase.Domain.Interfaces.Services;
 using ProjetoBase.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjetoBase.Domain.Services
 {
@@ -23,21 +19,21 @@ namespace ProjetoBase.Domain.Services
 
         public AdicionarUsuarioResponse Adicionar(AdicionarUsuarioRequest request)
         {
-            var nome = new Nome()
-            {
-                PrimeiroNome = request.PrimeiroNome,
-                UltimoNome = request.UltimoNome
-            };
-
+            var nome = new Nome(request.PrimeiroNome, request.UltimoNome);
             var tipo = (UsuarioTipo)System.Enum.Parse(typeof(UsuarioTipo), request.Tipo);
 
             var usuario = new Usuario(nome, request.Email, tipo);
+            var usuarioResponse = new AdicionarUsuarioResponse();
 
-            usuario = _repositoryUsuario.Adicionar(usuario);
+            if (!usuario.ValidationResult.IsValid)
+            {
+                usuarioResponse.ErrorMessage.AddRange(usuario.ValidationResult.Errors.Select(s => s.ErrorMessage));
+                return usuarioResponse;
+            }
 
-            //Retornar com o Mapper
+            var xusuario = _repositoryUsuario.Adicionar(usuario);
 
-            throw new NotImplementedException();
+            return (AdicionarUsuarioResponse) xusuario;
         }
     }
 }

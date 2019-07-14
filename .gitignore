@@ -5,3 +5,5 @@
 /.vs
 /ProjetoBase.Domain/obj
 /ProjetoBase.Domain/bin
+/ProjetoBase.UnitTest/obj
+/ProjetoBase.UnitTest/bin
