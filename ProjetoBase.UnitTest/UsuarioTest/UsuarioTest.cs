@@ -38,6 +38,27 @@ namespace ProjetoBase.UnitTest.UsuarioTest
 
         private AdicionarUsuarioRequest GetAdicionarUsuarioRequest()
         {
+
+
+
+
+
+            var age = 32;
+
+
+
+
+
+
+
+
+
+
+            var x = age;
+            age = 1;
+
+
+
             return new AdicionarUsuarioRequest()
             {
                 PrimeiroNome = "Primeiro Nome",
